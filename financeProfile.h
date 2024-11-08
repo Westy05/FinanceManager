@@ -28,7 +28,6 @@ class FinanceProfile {
 		double getExpenses() const { return expenses; }
 		map<string, double> getMonthlyExpenses() const { return monthlyExpenses; }
 
-		// TODO: add methods for tracking expenditures such as rent, utilities, etc.
 		void addMonthlyExpenses();
 		void addMonthlyExpenses(const string& filename);
 		void saveProfile(const string& filename);
@@ -38,8 +37,8 @@ class FinanceProfile {
 		string firstName; // first name of the user
 		string lastName; // last name of the user
 		double income; // monthly income of the user
-		double expenses; // monthly expenses of the user
-		map<string, double> monthlyExpenses; // name of subscription and the monthly cost
+		double expenses; // total amount of monthly expenses of the user
+		map<string, double> monthlyExpenses; // name of expense and the monthly cost of it
 };
 
 #endif

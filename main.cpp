@@ -44,7 +44,7 @@ int main() {
 	}
 
 	FinanceProfile f2(firstName, lastName, income);
-	f2.addSubscriptions();
+	f2.addMonthlyExpenses();
 	f2.saveProfile("profile.txt");
 	cout << f2;
 

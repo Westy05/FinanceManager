@@ -26,32 +26,32 @@ FinanceProfile::FinanceProfile(string fName, string lName, double newIncome) {
 	expenses = 0;
 }
 
-// destructor, just clears the subscriptions map
+// destructor, just clears the monthly expenses map
 FinanceProfile::~FinanceProfile() {
 	monthlyExpenses.clear();
 }
 
-// adds the cost to the total expenses and inserts the sub's name and cost into the subscriptions map
+// adds the cost to the total expenses and inserts the expense's name and cost into the monthly expenses map
 void FinanceProfile::addMonthlyExpenses() {
-	string nameOfSub = "";
-	double costOfSub = 0;
-	char moreSubs;
+	string nameOfExpense = "";
+	double costOfExpense = 0;
+	char moreExpenses;
 
-	// loops while the user is not done yet entering their subscriptions
+	cin.ignore();
+	// loops while the user is not done yet entering their monthly expenses
 	while (true) {
-
-		// first asks for name of sub and gets the line for it, while loop prevents a non-string from being entered
-		cout << "Enter the name of the subscription: ";
-		getline(cin, nameOfSub);
+		// first asks for name of expense and gets the line for it, while loop prevents a non-string from being entered
+		cout << "Enter the name of the monthly expense: ";
+		getline(cin, nameOfExpense);
 
 		// Validate that the name isn't empty and contains at least one non-whitespace character
-		while (nameOfSub.empty() || nameOfSub.find_first_not_of(" \t\n\r") == string::npos) {
+		while (nameOfExpense.empty() || nameOfExpense.find_first_not_of(" \t\n\r") == string::npos) {
 			cout << "Invalid name! Please enter a non-empty name: ";
-			getline(cin, nameOfSub);
+			getline(cin, nameOfExpense);
 		}
 
-		cout << endl << "Enter the monthly cost of the subscription: ";
-		cin >> costOfSub;
+		cout << endl << "Enter the monthly cost of the expense: ";
+		cin >> costOfExpense;
 		cin.ignore();
 
 		// makes sure no invalid types are added
@@ -59,29 +59,29 @@ void FinanceProfile::addMonthlyExpenses() {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Wrong type! Please enter a number: ";
-			cin >> costOfSub;
+			cin >> costOfExpense;
 		}
 
 		// adds the cost to the total expenses
-		expenses += costOfSub;
-		// inserts the sub's name and cost into the subscriptions map
-		monthlyExpenses.insert({nameOfSub, costOfSub});
+		expenses += costOfExpense;
+		// inserts the expense's name and cost into the monthly expenses map
+		monthlyExpenses.insert({nameOfExpense, costOfExpense});
 
-		// checks if the user wants to add anymore additional subs, prevents anything other than a char
-		cout << endl << "Anymore subscriptions to add? (Y/N): ";
-		cin >> moreSubs;
+		// checks if the user wants to add anymore additional expenses, prevents anything other than a char
+		cout << endl << "Anymore monthly expenses to add? (Y/N): ";
+		cin >> moreExpenses;
 		cin.ignore();
 
-		while (cin.fail() || (toupper(moreSubs) != 'Y' && toupper(moreSubs) != 'N')) {
+		while (cin.fail() || (toupper(moreExpenses) != 'Y' && toupper(moreExpenses) != 'N')) {
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Please enter Y or N: ";
-			cin >> moreSubs;
+			cin >> moreExpenses;
 			cin.ignore();
 		}
 
-		// ends while loop if user says it has no more additional subs to add
-		if (toupper(moreSubs) == 'N') {
+		// ends while loop if user says it has no more additional expenses to add
+		if (toupper(moreExpenses) == 'N') {
 			break;
 		}
 	}
@@ -90,8 +90,8 @@ void FinanceProfile::addMonthlyExpenses() {
 // adds the monthly expenses from a file (preferably a .txt file) to the finance profile object
 void FinanceProfile::addMonthlyExpenses(const string& filename) {
 	ifstream inFile(filename);
-	string nameOfSub = "";
-	double costOfSub = 0;
+	string nameOfExpense = "";
+	double costOfExpense = 0;
 
 	// checks if the file was opened successfully
 	if (inFile.fail()) {
@@ -99,9 +99,9 @@ void FinanceProfile::addMonthlyExpenses(const string& filename) {
 		exit(1);
 	}
 
-	while (inFile >> nameOfSub >> costOfSub) {
-		expenses += costOfSub;
-		monthlyExpenses.insert({nameOfSub, costOfSub});
+	while (inFile >> nameOfExpense >> costOfExpense) {
+		expenses += costOfExpense;
+		monthlyExpenses.insert({nameOfExpense, costOfExpense});
 	}
 
 	inFile.close();
@@ -126,14 +126,14 @@ void FinanceProfile::saveProfile(const string& filename) {
 // overloaded << operator to output the finance profile
 ostream& operator <<(ostream& out, const FinanceProfile& profile) {
 	out << "Name: " << profile.getWholeName() << endl;
-	out << "Income: $" << profile.getIncome() << endl;
-	out << "Expenses: $" << profile.getExpenses() << endl;
-	out << "Net Worth: $" << profile.getIncome() - profile.getExpenses() << endl;
-	out << "Subscriptions: " << endl;
+	out << "Monthly Income: $" << profile.getIncome() << endl;
+	out << "Total Monthly Expenses: $" << profile.getExpenses() << endl;
+	out << "Net Monthly Income: $" << profile.getIncome() - profile.getExpenses() << endl;
+	out << "Monthly Expenses: " << endl;
 
-	// iterates through the monthly expenses map and outputs the name and cost of each subscription
-	for (const auto& sub : profile.monthlyExpenses) {
-		out << "Paying " << sub.first << " for $" << sub.second << " per month" << endl;
+	// iterates through the monthly expenses map and outputs the name and cost of each expense
+	for (const auto& expense : profile.monthlyExpenses) {
+		out << "Paying " << expense.first << " for $" << expense.second << " per month" << endl;
 	}
 
 	return out;
