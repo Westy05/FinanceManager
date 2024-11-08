@@ -6,7 +6,7 @@ Currently this project has a few functions, it can...
 * Use a map<string, double> object to hold the monthly expenses' names and costs.
 * Prevent invalid inputs from the user from occurring such as typing in words for the cost instead of numbers.
 * Save a FinanceProfile object's data to a .txt file or its map object to a .csv file.
-* Add monthly expenses by reading a .txt file.
+* Add monthly expenses by reading a .txt file that contains the name of the expense and the cost of it.
 
 ## <ins>**File Overview**<ins/>
 ### main.cpp
@@ -20,4 +20,5 @@ Just the declaration of the previously mentioned FinanceProfile class.
 
 
 **Want to tweak my project?**
+
 It's simple. All you have to do is just change the code inside the main function in main.cpp to change how it runs. Of course after making said changes, you have to recompile the program with all .h and .cpp files included.
