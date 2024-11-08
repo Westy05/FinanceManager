@@ -26,9 +26,11 @@ class FinanceProfile {
 		string getLastName() const { return lastName; }
 		double getIncome() const { return income; }
 		double getExpenses() const { return expenses; }
-		map<string, double> getSubscriptions() const { return subscriptions; }
+		map<string, double> getMonthlyExpenses() const { return monthlyExpenses; }
 
-		void addSubscriptions();
+		// TODO: add methods for tracking expenditures such as rent, utilities, etc.
+		void addMonthlyExpenses();
+		void addMonthlyExpenses(const string& filename);
 		void saveProfile(const string& filename);
 		friend ostream& operator <<(ostream& out, const FinanceProfile& profile);
 
@@ -37,7 +39,7 @@ class FinanceProfile {
 		string lastName; // last name of the user
 		double income; // monthly income of the user
 		double expenses; // monthly expenses of the user
-		map<string, double> subscriptions; // name of subscription and the monthly cost
+		map<string, double> monthlyExpenses; // name of subscription and the monthly cost
 };
 
 #endif
