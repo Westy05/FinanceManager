@@ -8,6 +8,7 @@ Currently this project has a few functions, it can...
     * Save a FinanceProfile object's data to a .txt file or its map object to a .csv file.
     * Add monthly expenses by reading a .txt file.
 
+## <ins>**File Overview**<ins/>
 ### main.cpp
 This file essentially runs the code written in the other files so that the .exe actually does something when compiled.
 
@@ -17,5 +18,6 @@ Essentially the implementation of the FinanceProfile class which allows the easy
 ### financeProfile.h
 Just the declaration of the previously mentioned FinanceProfile class.
 
-### Want to tweak my project?
+
+**Want to tweak my project?**
 It's simple. All you have to do is just change the code inside the main function in main.cpp to change how it runs. Of course after making said changes, you have to recompile the program with all .h and .cpp files included.
