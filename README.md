@@ -2,11 +2,11 @@ Welcome to my first personal programming project!
 
 ## <ins>**Function Overview**<ins/>
 Currently this project has a few functions, it can...
-    * Read user input and compile it into data for keeping track of monthly income and expenses.
-    * Use a map<string, double> object to hold the monthly expenses' names and costs.
-    * Prevent invalid inputs from the user from occurring such as typing in words for the cost instead of numbers.
-    * Save a FinanceProfile object's data to a .txt file or its map object to a .csv file.
-    * Add monthly expenses by reading a .txt file.
+* Read user input and compile it into data for keeping track of monthly income and expenses.
+* Use a map<string, double> object to hold the monthly expenses' names and costs.
+* Prevent invalid inputs from the user from occurring such as typing in words for the cost instead of numbers.
+* Save a FinanceProfile object's data to a .txt file or its map object to a .csv file.
+* Add monthly expenses by reading a .txt file.
 
 ## <ins>**File Overview**<ins/>
 ### main.cpp
