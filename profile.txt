@@ -1,7 +1,0 @@
-Name: John Smith
-Income: $50000
-Expenses: $42
-Net Worth: $49958
-Subscriptions: 
-Paying nah for $40 per month
-Paying two for $2 per month
