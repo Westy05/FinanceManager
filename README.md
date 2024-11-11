@@ -1,4 +1,4 @@
-Welcome to my first personal programming project!
+Welcome to my first personal programming project! This project is intended to make managing your monthly budget easier by keeping track of your monthly income and expenses. 
 
 ## <ins>**Function Overview**<ins/>
 Currently this project has a few functions, it can...
