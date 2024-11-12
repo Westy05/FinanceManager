@@ -1,4 +1,7 @@
 #include "FinanceProfile.h"
+#include <iostream> // for cin and cout
+#include <limits> // for numeric_limits
+#include <cstdlib> // for exit()
 
 using namespace std;
 
@@ -120,6 +123,27 @@ void FinanceProfile::saveProfile(const string& filename) {
 
 	// writes the finance profile to the file and closes it
 	outFile << *this;
+	outFile.close();
+}
+
+
+// saves the finance profile to a file, preferably a .csv file
+void FinanceProfile::saveExpenses(const string& filename) {
+	ofstream outFile(filename);
+
+	// checks if the file was opened successfully
+	if (outFile.fail()) {
+		cout << "Error opening file for writing!" << endl;
+		
+		exit(1);
+	}
+
+	// iterates through the monthly expenses map and outputs the name and cost of each expense
+	outFile << "NameOfExpense,CostOfExpense" << endl;
+	for (const auto& expense : monthlyExpenses) {
+		outFile << expense.first << "," << expense.second << endl;
+	}
+
 	outFile.close();
 }
 

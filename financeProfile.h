@@ -2,13 +2,9 @@
 #ifndef FinanceProfile_h
 #define FinanceProfile_h
 
-#include <iostream>
 #include <string>
 #include <map>
-#include <limits>
-#include <cctype>
 #include <fstream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -31,6 +27,7 @@ class FinanceProfile {
 		void addMonthlyExpenses();
 		void addMonthlyExpenses(const string& filename);
 		void saveProfile(const string& filename);
+		void saveExpenses(const string& filename);
 		friend ostream& operator <<(ostream& out, const FinanceProfile& profile);
 
 	private:

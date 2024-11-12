@@ -1,7 +1,10 @@
 #include "FinanceProfile.h"
+#include <iostream> // for cin and cout
+#include <limits> // for numeric_limits
 
 using namespace std;
 
+// TODO: add a input validation function, maybe add an imput manager class
 int main() {
 	FinanceProfile f1;
 	string firstName, lastName;
@@ -45,6 +48,7 @@ int main() {
 
 	FinanceProfile f2(firstName, lastName, income);
 	f2.addMonthlyExpenses();
+	f2.saveExpenses("expenses.csv");
 	f2.saveProfile("profile.txt");
 	cout << f2;
 
