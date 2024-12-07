@@ -3,7 +3,7 @@
 #define FinanceProfile_h
 
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <fstream>
 
 using namespace std;
@@ -22,7 +22,7 @@ class FinanceProfile {
 		string getLastName() const { return lastName; }
 		double getIncome() const { return income; }
 		double getExpenses() const { return expenses; }
-		map<string, double> getMonthlyExpenses() const { return monthlyExpenses; }
+		unordered_map<string, double> getMonthlyExpenses() const { return monthlyExpenses; }
 
 		void addMonthlyExpenses();
 		void addMonthlyExpenses(const string& filename);
@@ -35,7 +35,7 @@ class FinanceProfile {
 		string lastName; // last name of the user
 		double income; // monthly income of the user
 		double expenses; // total amount of monthly expenses of the user
-		map<string, double> monthlyExpenses; // name of expense and the monthly cost of it
+		unordered_map<string, double> monthlyExpenses; // name of expense and the monthly cost of it
 };
 
 #endif
