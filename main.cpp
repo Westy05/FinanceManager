@@ -4,47 +4,17 @@
 
 using namespace std;
 
-// TODO: add a input validation function, maybe add an imput manager class
+string validInput(string outputVal, bool isNum);
+
+// TODO: maybe add an imput manager class
 int main() {
 	FinanceProfile f1;
 	string firstName, lastName;
 	double income;
 
-	while (true) {
-		cout << "Enter your first name: ";
-		cin >> firstName;
-		if (!cin.fail() && !firstName.empty()) {
-			break;
-		} else {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Invalid input! Please enter a valid first name." << endl;
-		}
-	}
-
-	while (true) {
-		cout << "Enter your last name: ";
-		cin >> lastName;
-		if (!cin.fail() && !lastName.empty()) {
-			break;
-		} else {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Invalid input! Please enter a valid last name." << endl;
-		}
-	}
-
-	while (true) {
-		cout << "Enter your monthly income: ";
-		cin >> income;
-		if (!cin.fail() && income >= 0) {
-			break;
-		} else {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Invalid input! Please enter a valid non-negative number for income." << endl;
-		}
-	}
+	firstName = validInput(string("first name"), false);
+	lastName = validInput(string("last name"), false);
+	income = stod(validInput(string("income"), true));
 
 	FinanceProfile f2(firstName, lastName, income);
 	f2.addMonthlyExpenses();
@@ -53,4 +23,39 @@ int main() {
 	cout << f2;
 
 	return 0;
+}
+
+// gets an input from the user that makes sure that it is correct
+string validInput(string outputVal, bool isNum) {
+	string result;
+	
+	if (!isNum) { // checks whether to take a string input or a double input
+		while (true) {
+			cout << "Enter your " << outputVal << ": ";
+			cin >> result;
+			if (!cin.fail() && !result.empty()) {
+				break;
+			} else {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Invalid input! Please enter a valid " << outputVal << "." << endl;
+			}
+		}
+	} else {
+		double number;
+		while (true) { // note: does not accept anything 0 or less
+			cout << "Enter your " << outputVal << ": ";
+			cin >> number;
+			if (!cin.fail() && number > 0) {
+				break;
+			} else {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Invalid input! Please enter a valid, postive " << outputVal << "." << endl;
+			}
+		}
+		result = to_string(number);
+	}
+
+	return result;
 }
